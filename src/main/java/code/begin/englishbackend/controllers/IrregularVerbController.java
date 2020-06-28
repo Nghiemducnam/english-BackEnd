@@ -1,6 +1,7 @@
 package code.begin.englishbackend.controllers;
 
 import code.begin.englishbackend.dtos.IrregularVerbSearchDTO;
+import code.begin.englishbackend.exceptions.LogicException;
 import code.begin.englishbackend.models.HttpResult;
 import code.begin.englishbackend.models.IrregularVerb;
 import code.begin.englishbackend.services.IrregularVerbService;
@@ -9,10 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/irregularVerb")
@@ -36,5 +34,13 @@ public class IrregularVerbController {
         logger.info("Controller for getByEmployerId");
         this.irregularVerbService.getIrregularVerbs(irregularVerbSearchDTO);
         return new ResponseEntity<>(irregularVerbSearchDTO, HttpStatus.OK);
+    }
+
+    @PutMapping("update")
+    public ResponseEntity<Void> updateIrregular(@RequestBody IrregularVerb irregularVerb) throws LogicException {
+        logger.info("Controller for update irregular {}", irregularVerb);
+        irregularVerbService.updateIrregularVerb(irregularVerb);
+        return new ResponseEntity<>(HttpStatus.OK);
+
     }
 }
