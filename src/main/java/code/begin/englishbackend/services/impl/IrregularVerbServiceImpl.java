@@ -1,6 +1,7 @@
 package code.begin.englishbackend.services.impl;
 
 import code.begin.englishbackend.daos.IrregularVerbDAO;
+import code.begin.englishbackend.dtos.IrregularVerbSearchDTO;
 import code.begin.englishbackend.models.HttpResult;
 import code.begin.englishbackend.models.IrregularVerb;
 import code.begin.englishbackend.services.IrregularVerbService;
@@ -33,8 +34,11 @@ public class IrregularVerbServiceImpl implements IrregularVerbService {
             this.irregularVerbDAO.save(irregularVerbDB);
     }
 
-
-
+    @Override
+    public void getIrregularVerbs(IrregularVerbSearchDTO irregularVerbSearchDTO) {
+        logger.info("Controller for getByEmployerId: {}",irregularVerbSearchDTO);
+        this.irregularVerbDAO.getIrregularVerbs(irregularVerbSearchDTO);
+    }
 
 
 }

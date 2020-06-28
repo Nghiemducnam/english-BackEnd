@@ -1,5 +1,6 @@
 package code.begin.englishbackend.controllers;
 
+import code.begin.englishbackend.dtos.IrregularVerbSearchDTO;
 import code.begin.englishbackend.models.HttpResult;
 import code.begin.englishbackend.models.IrregularVerb;
 import code.begin.englishbackend.services.IrregularVerbService;
@@ -28,5 +29,12 @@ public class IrregularVerbController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } else
             return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/list")
+    public ResponseEntity<IrregularVerbSearchDTO> getByEmployerId(@RequestBody IrregularVerbSearchDTO irregularVerbSearchDTO) {
+        logger.info("Controller for getByEmployerId");
+        this.irregularVerbService.getIrregularVerbs(irregularVerbSearchDTO);
+        return new ResponseEntity<>(irregularVerbSearchDTO, HttpStatus.OK);
     }
 }
