@@ -41,6 +41,13 @@ public class IrregularVerbController {
         logger.info("Controller for update irregular {}", irregularVerb);
         irregularVerbService.updateIrregularVerb(irregularVerb);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteIrregular(@PathVariable Long id) throws LogicException{
+        logger.info("Controller for delete irregular with id {}", id);
+        irregularVerbService.deleteIrregularVerb(id);
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 }

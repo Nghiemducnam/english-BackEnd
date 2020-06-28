@@ -71,5 +71,14 @@ public class IrregularVerbServiceImpl implements IrregularVerbService {
             throw new LogicException(ErrorCode.BAD_REQUEST);
     }
 
-
+    @Override
+    public void deleteIrregularVerb(Long id) throws LogicException {
+        Optional<IrregularVerb> currentIrregular = this.irregularVerbDAO.findById(id, IrregularVerb.class);
+        if(currentIrregular.isPresent()){
+            IrregularVerb irregularVerb = currentIrregular.get();
+            irregularVerbDAO.delete(irregularVerb);
+        }else {
+            throw new LogicException(ErrorCode.RECORD_NOT_FOUND);
+        }
+    }
 }

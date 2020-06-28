@@ -7,4 +7,5 @@ public interface IrregularVerbService {
     void createIrregularVerb(IrregularVerb irregularVerb);
     void getIrregularVerbs(IrregularVerbSearchDTO irregularVerbSearchDTO);
     void updateIrregularVerb(IrregularVerb irregularVerb) throws LogicException;
+    void deleteIrregularVerb(Long id) throws LogicException;
 }
