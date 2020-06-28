@@ -22,6 +22,7 @@
         <!--		<aws-java-sdk.version>1.11.113</aws-java-sdk.version>-->
         <modelmapper.version>2.3.2</modelmapper.version>
         <commons-fileupload.version>1.2.1</commons-fileupload.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
     </properties>
 
     <dependencies>
@@ -69,6 +70,12 @@
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
             <version>${modelmapper.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
         </dependency>
 
     </dependencies>

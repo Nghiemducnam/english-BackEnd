@@ -32,6 +32,9 @@ public class IrregularVerbServiceImpl implements IrregularVerbService {
         irregularVerbDB.setVerb1(irregularVerb.getVerb1());
         irregularVerbDB.setVerb2(irregularVerb.getVerb2());
         irregularVerbDB.setMeaning(irregularVerb.getMeaning());
+        irregularVerbDB.setSpellingVerb(irregularVerb.getSpellingVerb());
+        irregularVerbDB.setSpellingVerb1(irregularVerb.getSpellingVerb1());
+        irregularVerbDB.setSpellingVerb2(irregularVerb.getSpellingVerb2());
         irregularVerbDB.setVerbCategory(irregularVerb.getVerbCategory());
         irregularVerbDB.setId(irregularVerb.getId());
 
@@ -54,10 +57,13 @@ public class IrregularVerbServiceImpl implements IrregularVerbService {
                 throw new LogicException(ErrorCode.RECORD_NOT_FOUND);
             }else {
                 IrregularVerb irregularVerbDB = currentIrregularVerb.get();
-                irregularVerbDB.setVerb(irregularVerb.getVerb());
                 irregularVerbDB.setVerb1(irregularVerb.getVerb1());
+                irregularVerbDB.setVerb(irregularVerb.getVerb());
                 irregularVerbDB.setVerb2(irregularVerb.getVerb2());
                 irregularVerbDB.setMeaning(irregularVerb.getMeaning());
+                irregularVerbDB.setSpellingVerb(irregularVerb.getSpellingVerb());
+                irregularVerbDB.setSpellingVerb1(irregularVerb.getSpellingVerb1());
+                irregularVerbDB.setSpellingVerb2(irregularVerb.getSpellingVerb2());
                 irregularVerbDB.setVerbCategory(irregularVerb.getVerbCategory());
                 irregularVerbDAO.update(irregularVerbDB);
             }
