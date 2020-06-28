@@ -19,5 +19,8 @@ public class IrregularVerb {
     private String verb1;
     private String verb2;
     private String meaning;
+    private String spellingVerb;
+    private String spellingVerb1;
+    private String spellingVerb2;
     private Integer verbCategory;
 }

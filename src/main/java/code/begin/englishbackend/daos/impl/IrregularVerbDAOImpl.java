@@ -2,20 +2,21 @@ package code.begin.englishbackend.daos.impl;
 
 import code.begin.englishbackend.daos.IrregularVerbDAO;
 import code.begin.englishbackend.dtos.IrregularVerbSearchDTO;
-import code.begin.englishbackend.exceptions.LogicException;
 import code.begin.englishbackend.models.IrregularVerb;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 
 @Repository
 public class IrregularVerbDAOImpl extends AbstractBaseDAO implements IrregularVerbDAO {
     private static final Logger logger = LoggerFactory.getLogger(IrregularVerbDAOImpl.class);
+    private static final String VERB = "verb";
+
     @Override
     public void getIrregularVerbs(IrregularVerbSearchDTO irregularVerbSearchDTO) {
         StringBuilder sqlBuilder = new StringBuilder();
@@ -25,23 +26,35 @@ public class IrregularVerbDAOImpl extends AbstractBaseDAO implements IrregularVe
         sqlBuilder.append(" irr.verb1,");
         sqlBuilder.append(" irr.verb2,");
         sqlBuilder.append(" irr.meaning,");
+        sqlBuilder.append(" irr.spelling_verb,");
+        sqlBuilder.append(" irr.spelling_verb1,");
+        sqlBuilder.append(" irr.spelling_verb2,");
         sqlBuilder.append(" irr.verb_category");
         sqlBuilder.append(" from Irregular_verb as irr");
-        sqlBuilder.append(" where irr.verb_category =:id ");
+        sqlBuilder.append(" where 1 = 1 ");
+        if (irregularVerbSearchDTO.getOrders() != null && !irregularVerbSearchDTO.getOrders().isEmpty()) {
+            sqlBuilder.append(" order by ");
+            irregularVerbSearchDTO.getOrders().forEach(order -> {
+                String property = StringUtils.trimToEmpty(order.getProperty());
+                switch (property) {
+//    /*attention*/
+                    case VERB:
+                        sqlBuilder.append(" irr.verb ").append(getOrderBy(order.isAscending())).append(",");
+                        break;
+                    case "verb1":
+                        sqlBuilder.append(" irr.verb1 ").append(getOrderBy(order.isAscending())).append(",");
+                        break;
+                    case "verb2":
+                        sqlBuilder.append(" irr.verb2 ").append(getOrderBy(order.isAscending())).append(",");
+                        break;
+                    default:
+                }
+            });
+            sqlBuilder.deleteCharAt(sqlBuilder.length() - 1);
+        } else {
+            sqlBuilder.append(" order by irr.verb ");
+        }
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("id", 1);
         searchAndCountTotal(irregularVerbSearchDTO, sqlBuilder.toString(), parameters, IrregularVerb.class);
-
-//    @Override
-//    public void createIrregularVerb(IrregularVerb irregularVerb) {
-//        Session currentSession = getSession();
-//        currentSession.save(irregularVerb);
     }
-
-//    @Override
-//    public void updateIrregularVerb(IrregularVerb irregularVerb) throws LogicException {
-//            logger.info("IrregularVerbDAOImpl {}", irregularVerb);
-//        Optional<IrregularVerb> irregularVerbDB =
-//
-//    }
 }

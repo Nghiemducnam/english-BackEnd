@@ -2,6 +2,7 @@ package code.begin.englishbackend.daos.impl;
 
 import code.begin.englishbackend.daos.BaseDAO;
 import code.begin.englishbackend.dtos.BaseSearch;
+import code.begin.englishbackend.dtos.OrderDTO;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,10 @@ public abstract class AbstractBaseDAO implements BaseDAO {
     protected <T> void querySearchAndCount(BaseSearch searchDTO, String sqlString, Map<String, Object> parameters, Class<T>  clazz) {
         Query<T> query = getSession().createQuery(sqlString, clazz);
         searchAndCountTotal(searchDTO, sqlString, parameters, query);
+    }
+
+    protected String getOrderBy(boolean ascending) {
+        return ascending ? OrderDTO.ASC : OrderDTO.DESC;
     }
 
     private <T> void searchAndCountTotal(BaseSearch searchDTO, String sqlString, Map<String, Object> parameters, Query<T> query) {
