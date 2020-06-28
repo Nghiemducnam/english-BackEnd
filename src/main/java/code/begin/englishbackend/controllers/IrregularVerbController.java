@@ -32,7 +32,7 @@ public class IrregularVerbController {
     }
 
     @PostMapping("/list")
-    public ResponseEntity<IrregularVerbSearchDTO> getByEmployerId(@RequestBody IrregularVerbSearchDTO irregularVerbSearchDTO) {
+    public ResponseEntity<IrregularVerbSearchDTO> getIrregularVerbList(@RequestBody IrregularVerbSearchDTO irregularVerbSearchDTO) {
         logger.info("Controller for getByEmployerId");
         this.irregularVerbService.getIrregularVerbs(irregularVerbSearchDTO);
         return new ResponseEntity<>(irregularVerbSearchDTO, HttpStatus.OK);
