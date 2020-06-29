@@ -4,7 +4,6 @@ import code.begin.englishbackend.daos.IrregularVerbDAO;
 import code.begin.englishbackend.dtos.IrregularVerbSearchDTO;
 import code.begin.englishbackend.exceptions.ErrorCode;
 import code.begin.englishbackend.exceptions.LogicException;
-import code.begin.englishbackend.models.HttpResult;
 import code.begin.englishbackend.models.IrregularVerb;
 import code.begin.englishbackend.services.IrregularVerbService;
 import org.slf4j.Logger;

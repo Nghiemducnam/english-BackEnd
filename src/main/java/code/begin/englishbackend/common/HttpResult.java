@@ -1,11 +1,9 @@
-package code.begin.englishbackend.models;
+package code.begin.englishbackend.common;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -15,5 +13,5 @@ public class HttpResult<E> {
     private boolean success;
     private String message = "";
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<E> data;
+    private E data;
 }

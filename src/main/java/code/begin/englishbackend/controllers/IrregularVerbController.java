@@ -2,7 +2,6 @@ package code.begin.englishbackend.controllers;
 
 import code.begin.englishbackend.dtos.IrregularVerbSearchDTO;
 import code.begin.englishbackend.exceptions.LogicException;
-import code.begin.englishbackend.models.HttpResult;
 import code.begin.englishbackend.models.IrregularVerb;
 import code.begin.englishbackend.services.IrregularVerbService;
 import org.slf4j.Logger;
