@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashSet;
 import java.util.Set;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthRestAPIs {
