@@ -30,7 +30,7 @@ public class IrregularVerbDAOImpl extends AbstractBaseDAO implements IrregularVe
         sqlBuilder.append(" irr.spelling_verb1,");
         sqlBuilder.append(" irr.spelling_verb2,");
         sqlBuilder.append(" irr.verb_category");
-        sqlBuilder.append(" from Irregular_verb as irr");
+        sqlBuilder.append(" from irregular_verb as irr");
         sqlBuilder.append(" where 1 = 1 ");
         if (irregularVerbSearchDTO.getOrders() != null && !irregularVerbSearchDTO.getOrders().isEmpty()) {
             sqlBuilder.append(" order by ");
