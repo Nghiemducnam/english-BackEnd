@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import code.begin.englishbackend.daos.RoleDAO;
 import code.begin.englishbackend.daos.UserDAO;
+import code.begin.englishbackend.exceptions.LogicException;
 import code.begin.englishbackend.message.request.Login;
 import code.begin.englishbackend.message.request.SignUp;
 import code.begin.englishbackend.message.response.JwtResponse;
@@ -24,11 +25,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.Set;

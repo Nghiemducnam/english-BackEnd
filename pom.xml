@@ -23,6 +23,7 @@
         <modelmapper.version>2.3.2</modelmapper.version>
         <commons-fileupload.version>1.2.1</commons-fileupload.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
+        <commons-fileupload.version>1.2.1</commons-fileupload.version>
     </properties>
 
     <dependencies>
@@ -48,6 +49,19 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>3.0.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
